@@ -9,7 +9,7 @@ resource "azurerm_lb" "loadbalancer" {
     name                          = "PrivateIP"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Static"
-    private_ip_address            = "10.0.1.10"  # Choose a valid IP in n01639496-SUBNET
+    private_ip_address            = "10.0.1.10"
   }
 
   tags = var.tags
