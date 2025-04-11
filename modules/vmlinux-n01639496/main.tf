@@ -1,6 +1,6 @@
 
 resource "azurerm_availability_set" "avset" {
-  name                = "n01639496-linux-avset"
+  name                = "${var.humber_id}-linux-avset"
   location            = var.location
   resource_group_name = var.resource_group_name
   platform_fault_domain_count = 2
@@ -10,22 +10,22 @@ resource "azurerm_availability_set" "avset" {
 
 resource "azurerm_public_ip" "linux_pip" {
   for_each            = toset([for i in range(1, var.linux_vm_count + 1) : tostring(i)])
-  name                = "n01639496-c-vm${each.value}-pip"
+  name                = "${var.humber_id}-c-vm${each.value}-pip"
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
-  domain_name_label   = "n01639496-c-vm${each.value}"
+  domain_name_label   = "${var.humber_id}-c-vm${each.value}"
   tags = var.tags
 }
 
 resource "azurerm_network_interface" "nic" {
   for_each            = toset([for i in range(1, var.linux_vm_count + 1) : tostring(i)])
-  name                = "n01639496-c-vm${each.value}-nic"
+  name                = "${var.humber_id}-c-vm${each.value}-nic"
   location            = var.location
   resource_group_name = var.resource_group_name
 
   ip_configuration {
-    name                          = "n01639496-c-vm${each.value}-ipconfig"
+    name                          = "${var.humber_id}-c-vm${each.value}-ipconfig"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id = azurerm_public_ip.linux_pip[each.key].id
@@ -34,7 +34,7 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_linux_virtual_machine" "vm" {
   for_each            = toset([for i in range(1, var.linux_vm_count + 1) : tostring(i)])
-  name                = "n01639496-c-vm${each.value}"
+  name                = "${var.humber_id}-c-vm${each.value}"
   location            = var.location
   resource_group_name = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic[each.key].id]
@@ -43,7 +43,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username        = var.linux_admin_username
 
   os_disk {
-    name                 = "n01639496-c-vm${each.value}-osdisk"
+    name                 = "${var.humber_id}-c-vm${each.value}-osdisk"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

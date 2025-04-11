@@ -1,3 +1,6 @@
+variable "humber_id" {
+  type = string
+}
 
 variable "resource_group_name" {
   type = string
@@ -27,7 +30,7 @@ variable "linux_admin_username" {
 
 variable "ssh_public_key_path" {
   type    = string
-  default = "/home/n01639496/.ssh/id_rsa.pub"
+  default = "~/.ssh/id_rsa.pub"
 }
 
 variable "linux_vm_count" {
@@ -37,11 +40,14 @@ variable "linux_vm_count" {
 
 variable "tags" {
   type = map(string)
+<<<<<<< HEAD
   default = {
     Assignment     = "CCGC 5502 Automation Assignment"
     Name          = "Malan.VenkatesanSathyanaarayan"
     ExpirationDate = "2024-12-31"
     Environment    = "Learning"
   }
+=======
+>>>>>>> e2d0e75 (Optimized)
 }
 

@@ -31,6 +31,7 @@ module "common-n01639496" {
 module "vmlinux-n01639496" {
   source               = "./modules/vmlinux-n01639496"
   resource_group_name  = module.rgroup-n01639496.resource_group_name
+  humber_id            = var.humber_id
   location             = var.location
   subnet_id            = module.network-n01639496.subnet_id
   storage_account_name = module.common-n01639496.storage_account_name
@@ -45,6 +46,7 @@ module "vmwindows-n01639496" {
   source                 = "./modules/vmwindows-n01639496"
   resource_group_name    = module.rgroup-n01639496.resource_group_name
   location               = var.location
+  humber_id              = var.humber_id
   subnet_id              = module.network-n01639496.subnet_id
   windows_admin_username = var.windows_admin_username
   windows_admin_password = var.windows_admin_password
