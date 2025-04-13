@@ -55,7 +55,3 @@ This project automates the provisioning of a complete Azure infrastructure using
 - The Antimalware extension settings can be customized within the Windows VM module as needed.
 - Monitor the Terraform output for any errors or required actions during deployment.
 
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
