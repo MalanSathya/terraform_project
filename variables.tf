@@ -42,11 +42,7 @@ variable "common_tags" {
   type = map(string)
   default = {
     Assignment     = "CCGC 5502 Automation Assignment"
-<<<<<<< HEAD
-    Name           = "Malan.VenkatesanSathyanaarayan"
-=======
     Name           = "Malan Venkatesan Sathyanaarayan"
->>>>>>> e2d0e75 (Optimized)
     ExpirationDate = "2024-12-31"
     Environment    = "Learning"
   }
